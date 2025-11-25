@@ -1,0 +1,109 @@
+/* simple main.css — sade, iş görür */
+
+/* renk ve temel ayarlar */
+:root{
+    --bg: #0f0f14;
+    --card: #111318;
+    --accent: #7c4dff;
+    --text: #e6e6e6;
+    --muted: #bdbdbd;
+    --radius: 8px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Arial, system-ui, -apple-system; background:var(--bg); color:var(--text);}
+
+/* container */
+#main-content{
+    max-width:800px;
+    margin:36px auto;
+    padding:18px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:var(--radius);
+    border:1px solid rgba(255,255,255,0.03);
+}
+
+/* başlık */
+#main-content h2{margin:0 0 12px 0; font-size:18px; color:var(--accent)}
+
+/* basit satır düzeni */
+.row{display:flex; gap:8px; align-items:center; margin-bottom:10px}
+
+/* buton ortak */
+button{
+    padding:8px 12px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+    background:rgba(255,255,255,0.03);
+    color:var(--text);
+}
+button:disabled{opacity:0.5; cursor:not-allowed}
+
+/* tip butonlar */
+.btn-connect{background:linear-gradient(90deg,var(--accent),#5f35d9); color:white}
+.btn-send{background:var(--accent); color:white}
+.btn-disconnect{background:rgba(255,255,255,0.02); color:var(--muted)}
+
+/* inputlar */
+input[type="text"]{
+    flex:1;
+    padding:8px 10px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.03);
+    background:transparent;
+    color:var(--text);
+}
+input[type="text"]::placeholder{color:var(--muted)}
+
+/* gizle/göster */
+.hidden{display:none}
+
+/* sohbet paneli */
+#conversation-area{
+    margin-top:12px;
+    padding:12px;
+    background:rgba(255,255,255,0.01);
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.02);
+}
+
+/* mesaj listesi */
+#messages{
+    list-style:none;
+    margin:8px 0 0 0;
+    padding:0;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    max-height:360px;
+    overflow:auto;
+}
+
+/* tek mesaj stili (JS sadece <li> oluşturuyor, ekstra sınıfa gerek yok) */
+#messages li{
+    padding:8px 10px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.02);
+    font-size:14px;
+    color:var(--text);
+    display:inline-block;
+    max-width:85%;
+    word-break:break-word;
+}
+
+/* gönderene göre hizalama için (özellikle lokal testlerde) */
+/* Eğer JS'de kendi/başka ayrımı yaparsan .sent veya .received sınıflarını kullanabilirsin */
+#messages li.self{
+    background:linear-gradient(90deg,var(--accent), #5f35d9);
+    color:white;
+    align-self:flex-end;
+}
+
+/* küçük ekranlarda esnek davranış */
+@media (max-width:560px){
+    #main-content{margin:16px; padding:12px}
+    button{padding:7px 10px}
+    #messages{max-height:240px}
+}

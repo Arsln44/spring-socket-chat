@@ -8,7 +8,7 @@ import sphynx.springsocketchat.model.ChatMessage;
 @Controller
 public class ChatController {
 
-    @MessageMapping("/chat.sendMessage")
+    @MessageMapping("/sendMessage")
     @SendTo("/topic/public")
     public ChatMessage sendMessage(ChatMessage chatMessage){
         return chatMessage;

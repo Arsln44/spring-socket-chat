@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring WebSocket Sohbet</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <script src="/js/app.js"></script>
+</head>
+<body>
+
+<div id="main-content">
+    <h2>WebSocket Sohbet Odası</h2>
+
+    <div class="row">
+        <label>Bağlantı Durumu:</label>
+        <button id="connect" class="btn-connect" onclick="connect()">Bağlan</button>
+        <button id="disconnect" class="btn-disconnect" onclick="disconnect()" disabled>Kopar</button>
+    </div>
+
+    <div id="chat-panel" class="hidden">
+        <div class="row">
+            <input type="text" id="name" placeholder="Adınız nedir?" />
+        </div>
+        <div class="row">
+            <input type="text" id="message" placeholder="Mesajınız..." />
+        </div>
+        <button id="send" class="btn-send" onclick="sendMessage()">GÖNDER</button>
+    </div>
+
+    <div id="conversation-area" class="hidden">
+        <h3>Gelen Mesajlar</h3>
+        <ul id="messages">
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>
